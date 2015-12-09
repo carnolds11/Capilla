@@ -1,0 +1,11 @@
+.supersonic-navbar-mock {
+  background-color: #00B5FF !important;
+  text-align: center;
+  font-weight: 600;
+}
+
+.line {
+	width: 100%;
+	height: 3px;
+	background-color: yellow;
+}

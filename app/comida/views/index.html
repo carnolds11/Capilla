@@ -1,0 +1,31 @@
+<div ng-controller="IndexController">
+  <super-navbar>
+    <super-navbar-title>
+      Recetas
+    </super-navbar-title>
+  </super-navbar>
+
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+    <ul class="list" ng-hide="comidas.length == 0">
+
+      <super-navigate location="comida#show" data-params-id="{{ comida.id }}" ng-repeat="comida in comidas">
+        <li class="item item-icon-right">
+          <span ng-bind="comida['nombre']"></span>
+          <i class="icon super-ios-arrow-right"></i>
+        </li>
+      </super-navigate>
+
+    </ul>
+
+    <h4 ng-show="comidas.length == 0" class="assertive padding">
+      No se encontraron comidas. ¿Crear una?
+    </h4>
+
+    <super-modal-show location="comida#new">
+      <button class="button button-full button-positive">
+        Crear una receta nueva
+      </button>
+    </super-modal-show>
+  </div>
+</div>

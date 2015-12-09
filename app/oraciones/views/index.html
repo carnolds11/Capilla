@@ -1,0 +1,22 @@
+<div ng-controller="IndexController">
+  <super-navbar>
+    <super-navbar-title>
+      Oraciones
+    </super-navbar-title>
+  </super-navbar>
+
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+    <ul class="list" ng-hide="oracioness.length == 0">
+
+      <super-navigate location="oraciones#show" data-params-id="{{ oraciones.id }}" ng-repeat="oraciones in oracioness">
+        <li class="item item-icon-right">
+          <span ng-bind="oraciones['name']"></span>
+          <i class="icon super-ios-arrow-right"></i>
+        </li>
+      </super-navigate>
+
+    </ul>
+
+  </div>
+</div>

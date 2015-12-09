@@ -1,0 +1,43 @@
+<div ng-controller="ShowController">
+  <super-navbar>
+    <super-navbar-title>
+      Recetas
+    </super-navbar-title>
+  </super-navbar>
+
+  
+    <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+    <div ng-hide="showSpinner">
+
+      <div class="list card">
+        <div class="item item-image">
+          <img src="{{comida['imagen']}}"> 
+        </div>
+        <div class="padding">
+          <br>
+          <b><font style="color: #00B5FF;" size="5" ng-bind="comida['nombre']"></font></b>
+          <font>&nbsp&nbsp<span ng-bind="comida['cantidad']"></span></font> 
+          <br>
+          <div class="line"></div>
+          <br>
+
+          <p ng-repeat="rec in recetas" style="text-align: justify;">
+            <span ng-repeat="frase in sub_frases[$index]"><span ng-bind="frase"></span><br></span>
+            <br> 
+          </p>
+           
+        </div>
+      </div>
+
+        <super-modal-show location="comida#edit?id={{ comida.id }}">
+          <button class="button button-block button-positive">
+            Editar receta
+          </button>
+        </super-modal-show>
+
+        <button ng-click="remove(comida.id)" class="button button-block button-negative">
+          Eliminar receta
+        </button>
+
+    </div>
+</div>

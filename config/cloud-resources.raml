@@ -1,0 +1,137 @@
+#%RAML 0.8
+title: Steroids Data
+mediaType: application/json
+baseUri: https://rest-api.appgyver.com/v1
+
+traits:
+    - securedBySteroidsApiKey:
+        headers:
+          steroidsApiKey:
+            type: string
+            example: exampleapikey
+            default: d5b9a59bd07f9e0e091b30d8bf779e5c1b4ddad128e6b3c2b8cc4eea1a09838f
+          steroidsAppId:
+            type: integer
+            example: 1234
+            default: 91774
+  
+schemas:
+  - Oraciones_collection: '{"$schema":"http://json-schema.org/schema","title":"Oraciones collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Oraciones representation","properties":{"name":{"type":"string"},"oraciones":{"type":"string"}},"required":[]}}}}'
+  - Oraciones_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Oraciones representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"oraciones":{"type":"string"}},"required":[]}}}'
+  - Comida_collection: '{"$schema":"http://json-schema.org/schema","title":"Comida collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Comida representation","properties":{"nombre":{"type":"string"},"cantidad":{"type":"string"},"receta":{"type":"string"},"imagen":{"type":"string"}},"required":[]}}}}'
+  - Comida_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Comida representation","properties":{"object":{"type":"object","properties":{"nombre":{"type":"string"},"cantidad":{"type":"string"},"receta":{"type":"string"},"imagen":{"type":"string"}},"required":[]}}}'
+  - Postre_collection: '{"$schema":"http://json-schema.org/schema","title":"Postre collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Postre representation","properties":{"nombre":{"type":"string"},"cantidad":{"type":"string"},"ingredientes":{"type":"string"},"preparacion":{"type":"string"},"imagen":{"type":"string"}},"required":[]}}}}'
+  - Postre_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Postre representation","properties":{"object":{"type":"object","properties":{"nombre":{"type":"string"},"cantidad":{"type":"string"},"ingredientes":{"type":"string"},"preparacion":{"type":"string"},"imagen":{"type":"string"}},"required":[]}}}'
+
+resourceTypes:
+  - dolan_db_collection:
+      usage: This resourceType should be used for any collection of items
+      is: [ securedBySteroidsApiKey ]
+      get:
+        description: |
+          {
+            "action": "collection"
+          }
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "objects"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>>_collection # e.g cars
+      post:
+        description: |
+          {
+            "action": "create",
+            "rootKey": "object"
+          }
+        body:
+          application/json:
+            schema: <<resourcePathName>>_member
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>>_member # e.g. car
+
+  - dolan_db_member:
+      usage: This resourceType should be used for any built.io item
+      is: [ securedBySteroidsApiKey ]
+      get:
+        description: |
+          {
+            "action": "find"
+          }
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>>_member # e.g. car
+      put:
+        description: |
+          {
+            "action": "update",
+            "rootKey": "object"
+          }
+        body:
+          application/json:
+            schema: <<resourcePathName>>_member
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>>_member
+      delete:
+        description: |
+          {
+            "action": "destroy"
+          }
+        responses:
+          200:
+
+
+/Oraciones:
+  description: |
+    {
+      "resourceName": "Oraciones",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
+
+/Comida:
+  description: |
+    {
+      "resourceName": "Comida",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
+
+/Postre:
+  description: |
+    {
+      "resourceName": "Postre",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
+
+
