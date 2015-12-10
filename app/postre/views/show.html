@@ -1,28 +1,35 @@
 <div ng-controller="ShowController">
   <super-navbar>
     <super-navbar-title>
-      Show
+      Postres
     </super-navbar-title>
   </super-navbar>
 
-  <div class="padding">
+
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
-      <h2 ng-bind="postre['nombre']"></h2>
-      
-      
-      
-       <p>cantidad: <span ng-bind="postre['cantidad']"></span></p> 
-      
-       <p>ingredientes: <span ng-bind="postre['ingredientes']"></span></p> 
-      
-       <p>preparacion: <span ng-bind="postre['preparacion']"></span></p> 
-      
-       <p>imagen: <span ng-bind="postre['imagen']"></span></p> 
-      
+
+      <div class="list card">
+        <div class="item item-image">
+          <img src="{{postre['imagen']}}"> 
+        </div>
+        <div class="padding">
+          <br>
+          <b><font style="color: #00B5FF;" size="5" ng-bind="postre['nombre']"></font></b>
+          <font>&nbsp&nbsp<span ng-bind="postre['cantidad']"></span></font> 
+          <br>
+          <div class="line"></div>
+          <br>
+
+          <p><b style="color: #00B5FF;">Ingredientes</b><br><div ng-repeat="ing in ingredientes" style="text-align: justify;"><span ng-bind="ing"></span></div></p>
+          <br>
+          <p><b style="color: #00B5FF;">Preparación</b><br><div ng-repeat="prep in preparaciones" style="text-align: justify;"><span ng-bind="prep"></span></div></p>
+           
+        </div>
+      </div>
 
 
-      <super-modal-show location="postre#edit?id={{ postre.id }}">
+      <!--super-modal-show location="postre#edit?id={{ postre.id }}">
         <button class="button button-block button-positive">
           Edit
         </button>
@@ -30,7 +37,7 @@
 
       <button ng-click="remove(postre.id)" class="button button-block button-negative">
         Remove
-      </button>
-    </div>
+      </button-->
+
   </div>
 </div>

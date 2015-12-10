@@ -5,7 +5,6 @@ angular
     $scope.recetas = [];
     $scope.showSpinner = true;
     $scope.dataId = undefined;
-    //$scope.image-url = "";
 
     var _refreshViewData = function () {
       Comida.find($scope.dataId).then( function (comida) {

@@ -15,6 +15,10 @@ module.exports =
       id: "bienvenida"
       location: "home#bienvenida"
     }
+    {
+      id: "comidas"
+      location: "comida#comidas"
+    }
   ]
 
   # drawers:

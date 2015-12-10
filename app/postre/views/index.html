@@ -1,9 +1,14 @@
 <div ng-controller="IndexController">
   <super-navbar>
     <super-navbar-title>
-      Postre Index
+      Postres
     </super-navbar-title>
   </super-navbar>
+
+  <br>
+  <div class="line"></div>
+  <div class="blue-line"></div>
+  <div class="line"></div>
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
@@ -18,14 +23,19 @@
 
     </ul>
 
-    <h4 ng-show="postres.length == 0" class="assertive padding">
-      No postres found. Create one?
-    </h4>
+    <!--h4 ng-show="postres.length == 0" class="assertive padding">
+      No se encontraron postres. ¿Crear uno?
+    </h4-->
 
-    <super-modal-show location="postre#new">
+    <!--super-modal-show location="postre#new">
       <button class="button button-full button-positive">
-        Create a new postre
+        Crear un nuevo postre
       </button>
-    </super-modal-show>
+    </super-modal-show-->
   </div>
+
+  <div class="line"></div>
+  <div class="blue-line"></div>
+  <div class="line"></div>  
+
 </div>

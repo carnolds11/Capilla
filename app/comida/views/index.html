@@ -5,6 +5,11 @@
     </super-navbar-title>
   </super-navbar>
 
+  <br>
+  <div class="line"></div>
+  <div class="blue-line"></div>
+  <div class="line"></div>
+
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
     <ul class="list" ng-hide="comidas.length == 0">
@@ -18,14 +23,20 @@
 
     </ul>
 
-    <h4 ng-show="comidas.length == 0" class="assertive padding">
+    <!--h4 ng-show="comidas.length == 0" class="assertive padding">
       No se encontraron comidas. ¿Crear una?
-    </h4>
+    </h4-->
 
-    <super-modal-show location="comida#new">
+    <!--super-modal-show location="comida#new">
       <button class="button button-full button-positive">
         Crear una receta nueva
       </button>
-    </super-modal-show>
+    </super-modal-show-->
   </div>
+
+  <div class="line"></div>
+  <div class="blue-line"></div>
+  <div class="line"></div>
+  
+
 </div>

@@ -2,6 +2,8 @@ angular
   .module('postre')
   .controller("ShowController", function ($scope, Postre, supersonic) {
     $scope.postre = null;
+    $scope.preparaciones = [];
+    $scope.ingredientes = [];
     $scope.showSpinner = true;
     $scope.dataId = undefined;
 
@@ -9,6 +11,8 @@ angular
       Postre.find($scope.dataId).then( function (postre) {
         $scope.$apply( function () {
           $scope.postre = postre;
+          $scope.preparaciones = postre.preparacion.split("+");
+          $scope.ingredientes = postre.ingredientes.split("+");
           $scope.showSpinner = false;
         });
       });
