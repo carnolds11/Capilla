@@ -14,7 +14,7 @@
   <div ng-hide="showSpinner">
     <ul class="list" ng-hide="comidas.length == 0">
 
-      <super-navigate location="comida#show" data-params-id="{{ comida.id }}" ng-repeat="comida in comidas">
+      <super-navigate location="comida#show" data-params-id="{{ comida.nombre }}" ng-repeat="comida in comidas">
         <li class="item item-icon-right">
           <span ng-bind="comida['nombre']"></span>
           <i class="icon super-ios-arrow-right"></i>

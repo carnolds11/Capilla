@@ -1,0 +1,32 @@
+<div ng-controller="IndexController">
+  <super-navbar>
+    <super-navbar-title>
+      Ideas Útiles
+    </super-navbar-title>
+  </super-navbar>
+
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+
+    <br>
+    <div class="line"></div>
+    <div class="blue-line"></div>
+    <div class="line"></div>
+    <br>
+
+    <div class="padding">
+      <div ng-repeat="idea in ideas">
+          <p style="text-align:justify;"><i class="icon super-android-bulb">&nbsp&nbsp<span ng-bind="idea['tip']"></span>
+          </i></p>
+          <br>
+          <div class="line"></div>
+          <br>
+      </div>
+    </div>
+
+    <div class="line"></div>
+    <div class="blue-line"></div>
+    <div class="line"></div>
+    <br>
+  </div>
+</div>

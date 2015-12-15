@@ -4,10 +4,6 @@ angular
     $scope.postres = null;
     $scope.showSpinner = true;
 
-    Postre.all().whenChanged( function (postres) {
-        $scope.$apply( function () {
-          $scope.postres = postres;
-          $scope.showSpinner = false;
-        });
-    });
+    $scope.postres = JSON.parse(window.localStorage.getItem('jPostre'));
+    $scope.showSpinner = false;
   });

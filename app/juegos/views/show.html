@@ -1,0 +1,26 @@
+<div ng-controller="ShowController">
+  <super-navbar>
+    <super-navbar-title>
+      Juego
+    </super-navbar-title>
+  </super-navbar>
+
+  <img src="/images/mario.png" height="100px" style="position:absolute; top:10px; right:10px;"/>
+  <div style="height:70px;"></div>
+
+  <div class="padding">
+    <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+    <div ng-hide="showSpinner">
+
+      <b><h4 style="color: #00B5FF" ng-bind="juegos['nombre']"></h4></b>
+      <div class="line"></div>
+      <br>
+      <p ng-repeat="juego in los_juegos" style="text-align: justify;">
+        <span ng-repeat="frase in sub_frases[$index]"><span ng-bind="frase"></span><br></span>
+        <br> 
+      </p>
+      
+
+    </div>
+  </div>
+</div>

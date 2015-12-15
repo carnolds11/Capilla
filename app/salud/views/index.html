@@ -1,0 +1,33 @@
+<div ng-controller="IndexController">
+  <super-navbar>
+    <super-navbar-title>
+      Salud
+    </super-navbar-title>
+  </super-navbar>
+
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+
+    <br>
+    <div class="line"></div>
+    <div class="blue-line"></div>
+    <div class="line"></div>
+
+    <ul class="list" ng-hide="saluds.length == 0">
+
+      <super-navigate location="salud#show" data-params-id="{{ salud.id }}" ng-repeat="salud in saluds">
+        <li class="item item-icon-right">
+          <span ng-bind="salud['nombre']"></span>
+          <i class="icon super-ios-arrow-right"></i>
+        </li>
+      </super-navigate>
+
+    </ul>
+
+    <div class="line"></div>
+    <div class="blue-line"></div>
+    <div class="line"></div>
+    <br>
+
+  </div>
+</div>

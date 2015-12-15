@@ -4,10 +4,6 @@ angular
     $scope.oracioness = null;
     $scope.showSpinner = true;
 
-    Oraciones.all().whenChanged( function (oracioness) {
-        $scope.$apply( function () {
-          $scope.oracioness = oracioness;
-          $scope.showSpinner = false;
-        });
-    });
+    $scope.oracioness = JSON.parse(window.localStorage.getItem('jOraciones'));
+    $scope.showSpinner = false;
   });

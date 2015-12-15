@@ -22,6 +22,12 @@ schemas:
   - Comida_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Comida representation","properties":{"object":{"type":"object","properties":{"nombre":{"type":"string"},"cantidad":{"type":"string"},"receta":{"type":"string"},"imagen":{"type":"string"}},"required":[]}}}'
   - Postre_collection: '{"$schema":"http://json-schema.org/schema","title":"Postre collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Postre representation","properties":{"nombre":{"type":"string"},"cantidad":{"type":"string"},"ingredientes":{"type":"string"},"preparacion":{"type":"string"},"imagen":{"type":"string"}},"required":[]}}}}'
   - Postre_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Postre representation","properties":{"object":{"type":"object","properties":{"nombre":{"type":"string"},"cantidad":{"type":"string"},"ingredientes":{"type":"string"},"preparacion":{"type":"string"},"imagen":{"type":"string"}},"required":[]}}}'
+  - Idea_collection: '{"$schema":"http://json-schema.org/schema","title":"Idea collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Idea representation","properties":{"tip":{"type":"string"},"id":{"type":"string"}},"required":[]}}}}'
+  - Idea_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Idea representation","properties":{"object":{"type":"object","properties":{"tip":{"type":"string"},"id":{"type":"string"}},"required":[]}}}'
+  - Juegos_collection: '{"$schema":"http://json-schema.org/schema","title":"Juegos collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Juegos representation","properties":{"nombre":{"type":"string"},"actividad":{"type":"string"}},"required":[]}}}}'
+  - Juegos_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Juegos representation","properties":{"object":{"type":"object","properties":{"nombre":{"type":"string"},"actividad":{"type":"string"}},"required":[]}}}'
+  - Salud_collection: '{"$schema":"http://json-schema.org/schema","title":"Salud collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Salud representation","properties":{"nombre":{"type":"string"},"características":{"type":"string"},"imagen":{"type":"string"}},"required":[]}}}}'
+  - Salud_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Salud representation","properties":{"object":{"type":"object","properties":{"nombre":{"type":"string"},"características":{"type":"string"},"imagen":{"type":"string"}},"required":[]}}}'
 
 resourceTypes:
   - dolan_db_collection:
@@ -128,6 +134,36 @@ resourceTypes:
   description: |
     {
       "resourceName": "Postre",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
+
+/Idea:
+  description: |
+    {
+      "resourceName": "Idea",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
+
+/Juegos:
+  description: |
+    {
+      "resourceName": "Juegos",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
+
+/Salud:
+  description: |
+    {
+      "resourceName": "Salud",
       "identifierKey": "id"
     }
   type: dolan_db_collection

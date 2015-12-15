@@ -8,14 +8,16 @@ angular
     $scope.dataId = undefined;
 
     var _refreshViewData = function () {
-      Postre.find($scope.dataId).then( function (postre) {
-        $scope.$apply( function () {
-          $scope.postre = postre;
-          $scope.preparaciones = postre.preparacion.split("+");
-          $scope.ingredientes = postre.ingredientes.split("+");
-          $scope.showSpinner = false;
-        });
-      });
+      var savedPostres = JSON.parse(window.localStorage.getItem('jPostre'));
+      for(var key in savedPostres){
+        if(savedPostres[key].id == $scope.dataId){
+          $scope.postre = savedPostres[key];
+          break;
+        }
+      }
+      $scope.preparaciones = $scope.postre.preparacion.split("+");
+      $scope.ingredientes = $scope.postre.ingredientes.split("+");
+      $scope.showSpinner = false;
     }
 
     supersonic.ui.views.current.whenVisible( function () {
@@ -29,10 +31,10 @@ angular
       _refreshViewData();
     });
 
-    $scope.remove = function (id) {
+    /*$scope.remove = function (id) {
       $scope.showSpinner = true;
       $scope.postre.delete().then( function () {
         supersonic.ui.layers.pop();
       });
-    }
+    }*/
   });

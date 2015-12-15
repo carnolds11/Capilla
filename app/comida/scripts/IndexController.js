@@ -1,13 +1,16 @@
 angular
   .module('comida')
-  .controller("IndexController", function ($scope, Comida, supersonic) {
-    $scope.comidas = null;
-    $scope.showSpinner = true;
+  .controller("IndexController", function ($scope, supersonic) {
 
-    Comida.all().whenChanged( function (comidas) {
+    $scope.showSpinner = true;
+    $scope.comidas = JSON.parse(window.localStorage.getItem('jComida'));
+    $scope.showSpinner = false;
+    
+
+    /*Comida.all().whenChanged( function (comidas) {
         $scope.$apply( function () {
           $scope.comidas = comidas;
           $scope.showSpinner = false;
         });
-    });
+    });*/
   });

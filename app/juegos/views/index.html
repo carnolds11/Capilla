@@ -1,0 +1,33 @@
+<div ng-controller="IndexController">
+  <super-navbar>
+    <super-navbar-title>
+      Juegos
+    </super-navbar-title>
+  </super-navbar>
+
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+
+    <br>
+    <div class="line"></div>
+    <div class="blue-line"></div>
+    <div class="line"></div>
+    
+    <ul class="list" ng-hide="juegoss.length == 0">
+
+      <super-navigate location="juegos#show" data-params-id="{{ juegos.id }}" ng-repeat="juegos in juegoss">
+        <li class="item item-icon-right">
+          <span ng-bind="juegos['nombre']"></span>
+          <i class="icon super-ios-arrow-right"></i>
+        </li>
+      </super-navigate>
+
+    </ul>
+
+    <div class="line"></div>
+    <div class="blue-line"></div>
+    <div class="line"></div>
+    <br>
+
+  </div>
+</div>
