@@ -15,12 +15,14 @@
     <br>
 
     <div class="padding">
-      <div ng-repeat="idea in ideas">
-          <p style="text-align:justify;"><i class="icon super-android-bulb">&nbsp&nbsp<span ng-bind="idea['tip']"></span>
-          </i></p>
-          <br>
-          <div class="line"></div>
-          <br>
+      <div ng-repeat="idea in ideas" >
+        <p style="text-align:justify;">
+          <i class="icon super-android-bulb">&nbsp&nbsp<span ng-repeat="frase in sub_frases[$index]"><span ng-bind="frase"></span><br></span>
+          </i>
+        </p>
+        <br>
+        <div class="line"></div>
+        <br>
       </div>
     </div>
 
